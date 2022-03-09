@@ -1,6 +1,7 @@
 package base;
 import java.util.Date;
-public class Note {
+import java.lang.instrument.*;
+public class Note implements Comparable<Note>{
 
 	
 	
@@ -33,4 +34,21 @@ public class Note {
 			return false;
 		return true;
 	}
+	@Override 
+	public int compareTo(Note o) {
+		if(o.date.after(date)) {
+			return 1;
+		}
+		else if(this.date.after(o.date)) {
+			return -1;
+		}
+		else {
+			return 0;
+
+		}
+	}
+	public String toString() {
+		return  date.toString()+ '\t'+title;
+	}
+	
 }
