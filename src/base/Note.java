@@ -1,7 +1,8 @@
 package base;
 import java.util.Date;
+import java.io.Serializable;
 import java.lang.instrument.*;
-public class Note implements Comparable<Note>{
+public class Note implements Comparable<Note>,Serializable{
 
 	
 	
