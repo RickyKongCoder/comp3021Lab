@@ -14,6 +14,7 @@ public class Folder implements Comparable<Folder>,Serializable{
 	public void addNote(Note n) {
 	   notes.add(n);	 
 	}
+
 	public String getName() {
 		return name;
 	}
@@ -23,6 +24,18 @@ public class Folder implements Comparable<Folder>,Serializable{
 	public void sortNotes() {
 		//TO DO 
 	Collections.sort(notes);
+	}
+	public boolean removeNotes(String title) {
+		   // TODO
+		   // Given the title of the note, delete it from the folder.
+		   // Return true if it is deleted successfully, otherwise return false. 
+		   for(int i=0;i<notes.size();i++) {
+			   if(notes.get(i).getTitle().compareTo(title)==0) {
+				   notes.remove(i);
+				   return true;
+			   }
+		   }
+		   return false;
 	}
 	public List<Note> searchNotes(String keywords){
 		
