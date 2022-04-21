@@ -42,9 +42,11 @@ public class testLab4 {
 		}else{
 			throw new Exception("Your code has some problems.......");
 		}
-		
+	//	File f = new File(((TextNote) nb2.getFolders().get(0).getNotes().get(0)).getTitle().replaceAll(" ", "_")+".txt");
+		//TextNote t2 =new TextNote(f);
+	//	System.out.println(t2.content);
 		System.out.println("Congratulations, your code is OK");
-
+		TableNote ttt = new TableNote("C:\\Users\\User\\git\\comp3021lab\\src\\base\\test.txt");
 		
 	}
 }

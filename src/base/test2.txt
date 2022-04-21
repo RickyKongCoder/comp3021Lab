@@ -1,0 +1,3 @@
+name	 major	
+Bowen	 CS	
+Chengpeng	 CS	

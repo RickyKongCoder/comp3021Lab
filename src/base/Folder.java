@@ -29,7 +29,7 @@ public class Folder implements Comparable<Folder>,Serializable{
 		ArrayList<Note> list = new ArrayList<Note>();//List is an interface for ArrayList so 
 		//therefore can't not be initiated 
 		ArrayList<String> temp = new ArrayList<String>(); 
-		for(String w:keywords.split(" ",-1)) {
+		for(String w:keywords.split(" ",0)) {
            //if(w.compareTo("OR")!=0 && w.compareTo("or")!=0)
 			temp.add(w);
 
@@ -69,29 +69,36 @@ public class Folder implements Comparable<Folder>,Serializable{
 
 			}
 		}
-		String last = temp.get(temp.size()-2);
+		String last = "";
+		if(temp.size()>=2) {
+			last = temp.get(temp.size()-2);
 		if(last.toLowerCase().compareTo("or")==0) {
 			groupOr.add(temp.get(temp.size()-1));
 		}
 		else {
-			neccesary.add(last);
+			neccesary.add(temp.get(temp.size()-1));
 		}
-		if(groupOr!=null) {
+		}
+		if(temp.size()==1)
+			neccesary.add(temp.get(temp.size()-1));
+		if(!groupOr.isEmpty()) {
 			orArray.add(groupOr);
 		}
+//		System.out.println(neccesary.toString());
+//		System.out.println(orArray.toString());
 	    for(Note note:notes)	
 	    {
 	    	boolean valid = true;
 	    	for(int i=0;i<neccesary.size();i++) {
 	    		if(note instanceof ImageNote) {
-	    		if(!note.getTitle().toLowerCase().contains(neccesary.get(i))) {
-//		    		System.out.println(note.getTitle());
+	    		if(!note.getTitle().toLowerCase().contains(neccesary.get(i).toLowerCase())) {
+		    		System.out.println(note.getTitle());
 
 	    			valid = false;
 	    			break;
 	    		}
 	    		}else {
-	    		if(!note.getTitle().toLowerCase().contains(neccesary.get(i)) &&  !((TextNote)note).content.toLowerCase().contains(neccesary.get(i))) {
+	    		if(!note.getTitle().toLowerCase().contains(neccesary.get(i).toLowerCase()) &&  !((TextNote)note).content.toLowerCase().contains(neccesary.get(i).toLowerCase())) {
 		    			valid = false;
 		    			break;
 		    	}

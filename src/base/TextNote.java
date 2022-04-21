@@ -10,18 +10,18 @@ import java.io.FileWriter;
 public class TextNote extends Note {
 
 	public String content;
-	private String getTextFromFile(String absolutePath) {
+	String getTextFromFile(String absolutePath) {
 		String result="";
 		FileInputStream fis=null;
-		ObjectInputStream ois=null;
 		try {
-		TextNote temp = (TextNote)ois.readObject();
-	    this.content = temp.content;
-		ois.close();
+		fis = new FileInputStream(absolutePath);
+		int i=0;
+		while((i=fis.read())!=-1) {
+			result+=String.valueOf((char)i);
 		}
-	    catch(Exception e){
-	    e.printStackTrace();
-	    }
+		}catch(Exception e) {
+			System.out.println("Error reading text file.");
+		}
 		return result;
 		
 	}
